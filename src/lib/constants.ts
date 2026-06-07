@@ -72,7 +72,7 @@ export const STATUS_OPTIONS = [
   { slug: "completed",    label: "Completed" },
   { slug: "on_hiatus",    label: "On Hiatus" },
   { slug: "discontinued", label: "Discontinued" },
-  { slug: "info",         label: "Info" },
+  //{ slug: "info",         label: "Info" },
 ] as const;
 
 // Sort options
