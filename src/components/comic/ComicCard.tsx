@@ -28,7 +28,7 @@ export default function ComicCard({ comic, className = "" }: ComicCardProps) {
       <div className="relative aspect-[2/3] w-full overflow-hidden bg-bg-secondary">
         {/* Cover image via proxy */}
         {/* DIPERBAIKI: Hanya menggunakan slug */}
-        <Link href={comicUrl(slug)} className="block w-full h-full" id={`link-cover-${slug}`}>
+        <Link href={comicUrl(resolvedType, slug)} className="block w-full h-full" id={`link-cover-${slug}`}>
           <Image
             src={proxyImage(cover)}
             alt={title}
@@ -51,7 +51,7 @@ export default function ComicCard({ comic, className = "" }: ComicCardProps) {
         <div className="absolute inset-0 bg-bg-primary/70 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-all duration-300 z-10">
           {/* DIPERBAIKI: Hanya menggunakan slug */}
           <Link 
-            href={comicUrl(slug)}
+            href={comicUrl(resolvedType, slug)}
             className="flex items-center gap-2 bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 text-white px-4 py-2 rounded-full text-xs font-black tracking-widest uppercase shadow-[0_0_20px_rgba(124,58,237,0.4)] transition-all duration-300"
             id={`btn-read-now-${slug}`}
           >
@@ -64,7 +64,7 @@ export default function ComicCard({ comic, className = "" }: ComicCardProps) {
       {/* Meta Content area */}
       <div className="p-3.5 flex flex-col flex-grow bg-bg-card/40 z-1 hover:bg-bg-card/75 transition-colors duration-300">
         {/* DIPERBAIKI: Hanya menggunakan slug */}
-        <Link href={comicUrl(slug)} className="block mb-1" id={`link-title-${slug}`}>
+        <Link href={comicUrl(resolvedType, slug)} className="block mb-1" id={`link-title-${slug}`}>
           <h3 className="text-sm font-bold text-text-primary group-hover:text-accent transition-colors duration-200 line-clamp-1 leading-snug">
             {title}
           </h3>
