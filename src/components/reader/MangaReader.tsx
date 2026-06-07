@@ -204,7 +204,7 @@ export default function MangaReader({ data, chapters = [] }: MangaReaderProps) {
           <div className="flex items-center gap-3.5 min-w-0">
             {/* DIPERBAIKI: Menghapus comicType */}
             <Link 
-              href={comicUrl(comicSlug)}
+              href={comicUrl(resolvedType, comicSlug)}
               className="p-2 bg-white/5 hover:bg-white/10 text-text-secondary hover:text-text-primary rounded-xl transition-all cursor-pointer flex-shrink-0"
               aria-label="Back to series details"
               id="btn-reader-exit"
@@ -215,7 +215,7 @@ export default function MangaReader({ data, chapters = [] }: MangaReaderProps) {
             <div className="truncate">
               {/* DIPERBAIKI: Menghapus comicType */}
               <Link 
-                href={comicUrl(comicSlug)} 
+                href={comicUrl(resolvedType, comicSlug)} 
                 className="text-xs font-bold text-text-muted hover:text-accent uppercase tracking-wider block truncate"
                 id="reader-title-link"
               >
@@ -488,7 +488,7 @@ export default function MangaReader({ data, chapters = [] }: MangaReaderProps) {
 
           {/* DIPERBAIKI: Menghapus comicType */}
           <Link
-            href={comicUrl(comicSlug)}
+            href={comicUrl(resolvedType, comicSlug)}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-white/[0.04] bg-white/[0.01] hover:bg-white/5 font-bold text-xs uppercase tracking-wider transition-all duration-200"
             id="btn-nav-episode-index"
           >
