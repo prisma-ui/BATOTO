@@ -5,14 +5,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "picsum.photos" },
       { protocol: "https", hostname: "fastly.picsum.photos" },
-      { protocol: "https", hostname: "merrypsycho.xyz" },
-      { protocol: "https", hostname: "cdn2.merrypsycho.xyz" }
-    ], // Allow fallback placeholders, everything else is server-side proxied
-    localPatterns: [
-      {
-        pathname: "/api/image-proxy",
-        search: "?url=*",
-      },
+      // Daftarkan domain Worker Anda
+      { protocol: "https", hostname: "img.srrexus.workers.dev" }
     ],
     formats: ["image/avif", "image/webp"],
   },
