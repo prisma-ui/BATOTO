@@ -58,19 +58,19 @@ export default function MangaReader({ data, chapters = [] }: MangaReaderProps) {
       
       // Filter out duplicate series record to keep clean chronological shelf
       historyList = historyList.filter((item: any) => item.slug !== comicSlug);
-      
-      // Perbaikan sedikit agar lebih aman:
-historyList.unshift({
-  title: comicTitle,
-  slug: comicSlug,
-  type: comicType || "manga",
-  // Gunakan optional chaining untuk images
-  cover: data.coverUrl || (images && images.length > 0 ? images[0] : ""), 
-  chapterNumber,
-  chapterTitle,
-  readAt: new Date().toISOString()
-});
 
+      // Ganti bagian unshift ini:
+      historyList.unshift({
+        title: comicTitle,
+        slug: comicSlug,
+        type: comicType || "manga",
+        // Gunakan data.cover (atau ganti dengan properti yang benar dari API Anda)
+        // images[0] digunakan sebagai fallback jika cover tidak ada
+        cover: data.cover || (images && images.length > 0 ? images[0] : ""), 
+        chapterNumber,
+        chapterTitle,
+        readAt: new Date().toISOString()
+      });
 
       localStorage.setItem(historyKey, JSON.stringify(historyList.slice(0, 12)));
     } catch (e) {
