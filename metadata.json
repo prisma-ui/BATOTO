@@ -1,0 +1,8 @@
+{
+  "name": "xBatoto Manga Reader",
+  "description": "A high-performance modern reader for Manga, Manhwa, and Comics, with fluid navigation, search, and intuitive reading options.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

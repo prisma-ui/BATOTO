@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  /* Dark base */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #111118;
+  --color-bg-card: #16161f;
+  --color-bg-elevated: #1e1e2a;
+
+  /* Accent — vivid purple-blue gradient */
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
+  --color-accent-glow: rgba(124, 58, 237, 0.4);
+  --color-accent-secondary: #2563eb;
+
+  /* Text */
+  --color-text-primary: #f0f0f8;
+  --color-text-secondary: #9898b8;
+  --color-text-muted: #5a5a7a;
+
+  /* Status colors */
+  --color-ongoing: #10b981;
+  --color-completed: #3b82f6;
+  --color-hiatus: #f59e0b;
+  --color-dropped: #ef4444;
+
+  /* Border */
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(124, 58, 237, 0.5);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #7c3aed 0%, #2563eb 50%, #0ea5e9 100%);
+  --gradient-card: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.95) 100%);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(124,58,237,0.15) 0%, transparent 70%);
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  backdrop-filter: blur(12px);
+  background-color: rgba(22, 22, 31, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-elevated);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Hide Scrollbar helper */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Stagger Animation Base */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Fade in up keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
