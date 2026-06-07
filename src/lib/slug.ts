@@ -2,22 +2,38 @@
  * Slug routing helper utilities for xBatoto paths
  */
 
+// Definisikan daftar tipe yang diizinkan
+export const COMIC_TYPES = [
+  "manga",
+  "manhwa",
+  "manhua",
+  "novel",
+  "doujinshi",
+  "one-shot"
+] as const;
+
 export function comicUrl(type: string | undefined | null, slug: string): string {
   if (!slug) return "/browse";
-  const t = type ? type.toLowerCase() : "manga";
-  return `/${t}/${slug}`;
+
+  // Normalisasi input
+  const normalizedType = type?.toLowerCase() || "manga";
+
+  // Validasi: jika tipe tidak ada dalam daftar, gunakan 'manga' sebagai fallback
+  const finalType = COMIC_TYPES.includes(normalizedType as any) 
+    ? normalizedType 
+    : "manga";
+
+  return `/${finalType}/${slug}`;
 }
 
 export function readerUrl(slug: string, chapterSlug: string): string {
   if (!slug || !chapterSlug) return "/browse";
-  // Clean surrounding slashes
+  
   const cleanSlug = slug.replace(/^\/|\/$/g, "");
   let cleanChapter = chapterSlug.replace(/^\/|\/$/g, "");
   
-  // If chapterSlug contains the "read/" prefix, strip it
   cleanChapter = cleanChapter.replace(/^read\//, "");
 
-  // If chapterSlug contains any duplicate of slug, split and filter it out
   if (cleanChapter.includes("/")) {
     const parts = cleanChapter.split("/");
     const filteredParts = parts.filter((part) => part !== cleanSlug);
