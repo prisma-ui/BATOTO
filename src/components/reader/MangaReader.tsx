@@ -59,15 +59,18 @@ export default function MangaReader({ data, chapters = [] }: MangaReaderProps) {
       // Filter out duplicate series record to keep clean chronological shelf
       historyList = historyList.filter((item: any) => item.slug !== comicSlug);
       
-      historyList.unshift({
-        title: comicTitle,
-        slug: comicSlug,
-        type: comicType || "manga",
-        cover: chapters[0] ? `https://picsum.photos/seed/${comicSlug}/300/450` : "https://picsum.photos/300/450", // Fallback cover metadata identifier
-        chapterNumber,
-        chapterTitle,
-        readAt: new Date().toISOString()
-      });
+      // Perbaikan sedikit agar lebih aman:
+historyList.unshift({
+  title: comicTitle,
+  slug: comicSlug,
+  type: comicType || "manga",
+  // Gunakan optional chaining untuk images
+  cover: data.coverUrl || (images && images.length > 0 ? images[0] : ""), 
+  chapterNumber,
+  chapterTitle,
+  readAt: new Date().toISOString()
+});
+
 
       localStorage.setItem(historyKey, JSON.stringify(historyList.slice(0, 12)));
     } catch (e) {
