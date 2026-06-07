@@ -44,6 +44,7 @@ export interface ReadingData {
   chapterNumber: string;
   prevChapter?: string;
   nextChapter?: string;
+  cover?: string;
   images: string[]; // direct image URLs — must be proxied!
 }
 
