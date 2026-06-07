@@ -5,10 +5,19 @@ export function truncate(text?: string | null, maxLen = 150): string {
 }
 
 export function proxiedCoverUrl(url?: string | null): string {
+  // Jika tidak ada URL, kembalikan placeholder
   if (!url) return "https://picsum.photos/seed/placeholder/300/400";
-  // If it's already proxied, data uri, or local path, leave as-is
-  if (url.startsWith("/") || url.startsWith("data:") || url.includes("/api/proxy/image")) return url;
-  return `/api/proxy/image?url=${encodeURIComponent(url)}`;
+  
+  // Ganti dengan URL Cloudflare Worker Anda
+  const WORKER_URL = "https://img.srrexus.workers.dev";
+
+  // Cek apakah URL sudah berupa path lokal, base64, atau SUDAH diproxy oleh Worker
+  if (url.startsWith("/") || url.startsWith("data:") || url.includes(WORKER_URL)) {
+    return url;
+  }
+  
+  // Teruskan URL asli ke Cloudflare Worker
+  return `${WORKER_URL}/?url=${encodeURIComponent(url)}`;
 }
 
 export function comicUrl(slug: string): string {
