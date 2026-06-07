@@ -70,12 +70,13 @@ export default function HeroSection({ comic }: HeroSectionProps) {
 
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-4">
             <Link
-              href={comicUrl(type, slug)}
-              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white hover:bg-gray-200 text-[var(--color-background)] font-extrabold text-sm px-6 py-3 rounded-lg shadow-lg hover:shadow-white/10 transition-all"
-            >
-              <FiBookOpen size={16} />
-              <span>Full Details</span>
-            </Link>
+  href={comicUrl(slug)} 
+  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white hover:bg-gray-200 text-[var(--color-background)] font-extrabold text-sm px-6 py-3 rounded-lg shadow-lg hover:shadow-white/10 transition-all"
+>
+  <FiBookOpen size={16} />
+  <span>Full Details</span>
+</Link>
+
 
             <Link
               href={readUrl}
